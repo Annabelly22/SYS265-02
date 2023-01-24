@@ -1,0 +1,15 @@
+<h2>Setting up your environment</h2>
+
+To build a server environment consisting of a routed network (LAN and WAN) as well as introduce Server 2019 Desktop and Core and the systems required to manage them, you will need to follow these steps:
+
+	• Configure FW01, a pfSense router + firewall + gateway, to route traffic between your private network and your public network. Use your unique public IP address assigned via on the Canvas home page.
+
+	• Configure the virtual network for fw01 and pfSense similarly as you did during SYS255. Make sure to use your assigned IP for WAN and 10.0.5.2/24 for LAN. The WAN upstream gateway address is 10.0.17.2
+
+	• Configure wks01, the Windows 10 system, by adding a new Local Named Administrator account and setting a static IP address of 10.0.5.100, netmask of 255.255.255.0 and a gateway and DNS of 10.0.5.2 (your fw01 LAN interface). Give your system a hostname of wks01-yourname.
+
+	• Configure AD01, the Server Core machine, by changing and recording the new administrator password. Use sconfig to configure the following: Network Settings (IP: 10.0.5.5, Netmask: 255.255.255.0, Gateway: 10.0.5.2, Preferred DNS: 10.0.5.2), Computer Name: ad01-yourname and manual Windows Update.
+
+	• Use powershell to install Active Directory and create a new Forest with a Domain Name of yourfirstname.local (not hermione.local) on AD01.
+
+When done, your Windows 10 system, WKS01, should be able to ping your LAN's default gateway 10.0.5.2 and resolve and ping google.com.
